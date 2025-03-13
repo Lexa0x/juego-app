@@ -6,17 +6,17 @@ const Filters = ({ onApplyFilters }) => {
   const [genre, setGenre] = useState('');
   const [platform, setPlatform] = useState('');
   const [developer, setDeveloper] = useState('');
-  const [tags, setTags] = useState('');
+  const [tag, setTag] = useState('');
 
   const [availableGenres, setAvailableGenres] = useState([]);
   const [availablePlatforms, setAvailablePlatforms] = useState([]);
   const [availableTags, setAvailableTags] = useState([]);
-  
+
   const [loadingGenres, setLoadingGenres] = useState(true);
   const [loadingPlatforms, setLoadingPlatforms] = useState(true);
   const [loadingTags, setLoadingTags] = useState(true);
 
-  // Cargar géneros
+
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -36,7 +36,7 @@ const Filters = ({ onApplyFilters }) => {
     fetchGenres();
   }, []);
 
-  // Cargar plataformas
+
   useEffect(() => {
     const fetchPlatforms = async () => {
       try {
@@ -56,7 +56,6 @@ const Filters = ({ onApplyFilters }) => {
     fetchPlatforms();
   }, []);
 
-  // Cargar tags
   useEffect(() => {
     const fetchTags = async () => {
       try {
@@ -77,13 +76,14 @@ const Filters = ({ onApplyFilters }) => {
   }, []);
 
   const handleApplyFilters = () => {
-    onApplyFilters({
-      year,
-      genre,
-      platform,
-      developer,
-      tags,
-    });
+    const validFilters = {
+      ...(year && { dates: `${year}-01-01,${year}-12-31` }),
+      ...(genre && { genres: genre }),
+      ...(platform && { platforms: platform }),
+      ...(developer && { developers: developer }),
+      ...(tag && { tags: tag }),
+    };
+    onApplyFilters(validFilters);
   };
 
   return (
@@ -105,9 +105,9 @@ const Filters = ({ onApplyFilters }) => {
         ) : (
           <select value={genre} onChange={(e) => setGenre(e.target.value)}>
             <option value="">Todos</option>
-            {availableGenres.map((genre) => (
-              <option key={genre.id} value={genre.name}>
-                {genre.name}
+            {availableGenres.map((g) => (
+              <option key={g.id} value={g.id}>
+                {g.name}
               </option>
             ))}
           </select>
@@ -120,9 +120,9 @@ const Filters = ({ onApplyFilters }) => {
         ) : (
           <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
             <option value="">Todas</option>
-            {availablePlatforms.map((platform) => (
-              <option key={platform.id} value={platform.name}>
-                {platform.name}
+            {availablePlatforms.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.name}
               </option>
             ))}
           </select>
@@ -142,11 +142,11 @@ const Filters = ({ onApplyFilters }) => {
         {loadingTags ? (
           <div>Cargando tags...</div>
         ) : (
-          <select value={tags} onChange={(e) => setTags(e.target.value)}>
+          <select value={tag} onChange={(e) => setTag(e.target.value)}>
             <option value="">Todos</option>
-            {availableTags.map((tag) => (
-              <option key={tag.id} value={tag.name}>
-                {tag.name}
+            {availableTags.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.name}
               </option>
             ))}
           </select>
