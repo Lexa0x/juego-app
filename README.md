@@ -54,6 +54,12 @@ La aplicación está construida con **React**, una biblioteca de JavaScript para
 
 5. La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
 
+## Hosteo
+
+La aplicación está hospedada en **Vercel**. Puedes acceder a la versión en producción en la siguiente URL:
+
+[https://juego-app.vercel.app/](https://juego-app.vercel.app/)
+
 ## Estructura del Proyecto
 
 - **/src**: Contiene todo el código fuente del proyecto, incluidas las interfaces de usuario (componentes), servicios, y archivos relacionados con la configuración de la aplicación.
@@ -80,4 +86,3 @@ Si deseas contribuir a este proyecto, por favor, sigue estos pasos:
 ## Licencia
 
 Este proyecto está bajo la licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
-
