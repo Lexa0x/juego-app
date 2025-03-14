@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getTopGames } from '../services/api';
 import { Link } from 'react-router-dom';
 import Filters from '../components/Filters';
-import GameCard from '../components/TarjetaJuego'; // Importa el componente GameCard
-import '../App.css'; // Asegúrate de importar el archivo CSS
+import GameCard from '../components/TarjetaJuego';
+import '../App.css';
 
 const Home = () => {
   const [games, setGames] = useState([]);

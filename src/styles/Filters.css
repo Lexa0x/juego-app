@@ -1,16 +1,15 @@
-/* Estilos para los filtros */
 .filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px; /* Espacio entre los elementos */
+    gap: 15px;
     margin-bottom: 20px;
-    align-items: flex-end; /* Alinea los elementos en la parte inferior */
-    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .filters label {
     display: block;
-    margin-bottom: 5px; /* Reducir el margen inferior */
+    margin-bottom: 5px;
     font-weight: 500;
     color: var(--text-color);
 }
@@ -27,14 +26,13 @@
     transition: border-color var(--transition-speed);
 }
 
-/* Ajustar el ancho de los campos específicos */
 .filters input#anio,
 .filters input#desarrollador {
-    max-width: 150px; /* Ancho máximo más pequeño para Año y Desarrollador */
+    max-width: 150px;
 }
 
 .filters select {
-    max-width: 200px; /* Ancho máximo para los select */
+    max-width: 200px;
 }
 
 .filters input:focus,
@@ -52,16 +50,15 @@
     cursor: pointer;
     font-size: 14px;
     transition: background-color var(--transition-speed);
-    height: 40px; /* Ajustar la altura para que coincida con los inputs/selects */
+    height: 40px;
 }
 
 .filters button:hover {
     background-color: var(--primary-hover-color);
 }
 
-/* Contenedor para cada filtro */
 .filters .filter-item {
-    flex: 1 1 auto; /* Permite que los elementos crezcan y se ajusten */
-    min-width: 150px; /* Ancho mínimo para cada filtro */
-    max-width: 200px; /* Ancho máximo para cada filtro */
+    flex: 1 1 auto;
+    min-width: 150px;
+    max-width: 200px;
 }

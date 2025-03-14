@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';  // Para obtener el ID del juego desde la URL
+import { useParams, useNavigate } from 'react-router-dom';
 import { getGameDetails } from '../services/api';
 
 const GameDetail = () => {
-  const { id } = useParams();  // Obtener el ID del juego desde la URL
+  const { id } = useParams();
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -32,12 +32,12 @@ const GameDetail = () => {
   }
 
   const handleBack = () => {
-    navigate('/'); // Navega a la página de inicio
+    navigate('/');
   };
 
   return (
     <div>
-        <button onClick={handleBack} className="back-button">Volver a la página principal</button>
+      <button onClick={handleBack} className="back-button">Volver a la página principal</button>
       <h1>{game.name}</h1>
       <img src={game.background_image} alt={game.name} style={{ width: '300px' }} />
       <p>{game.description_raw}</p>

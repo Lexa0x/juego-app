@@ -5,24 +5,30 @@ const BASE_URL = 'https://api.rawg.io/api/games';
 
 export const getTopGames = async (page = 1, filters = {}) => {
   try {
-    const validFilters = Object.fromEntries(
-      Object.entries(filters).filter(([_, value]) => value && value !== '')
-    );
+    const validFilters = {};
 
-    const response = await axios.get(BASE_URL, {
-      params: {
-        key: API_KEY,
-        page_size: 20,
-        page,
-        ordering: '-metacritic',
-        ...validFilters,
-      },
-    });
+    for (const key in filters) {
+      if (filters[key] && filters[key] !== '') {
+        validFilters[key] = filters[key];
+      }
+    }
 
+    const params = {
+      key: API_KEY,
+      page_size: 20,
+      page: page,
+      ordering: '-metacritic',
+    };
+
+    for (const key in validFilters) {
+      params[key] = validFilters[key];
+    }
+
+    const response = await axios.get(BASE_URL, { params });
     return response.data.results;
   } catch (error) {
-    console.error('Error obteniendo juegos:', error);
-    return [];
+    console.error("Error fetching top games:", error);
+    throw error;
   }
 };
 
