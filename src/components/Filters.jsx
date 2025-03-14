@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/Filters.css'
 
 const Filters = ({ onApplyFilters }) => {
   const [year, setYear] = useState('');
@@ -87,73 +88,76 @@ const Filters = ({ onApplyFilters }) => {
   };
 
   return (
-    <div>
-      <h3>Filtros</h3>
-      <div>
-        <label>Año:</label>
-        <input
-          type="number"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          placeholder="Año de lanzamiento"
-        />
-      </div>
-      <div>
-        <label>Género:</label>
-        {loadingGenres ? (
-          <div>Cargando géneros...</div>
-        ) : (
-          <select value={genre} onChange={(e) => setGenre(e.target.value)}>
-            <option value="">Todos</option>
-            {availableGenres.map((g) => (
-              <option key={g.id} value={g.id}>
-                {g.name}
-              </option>
-            ))}
-          </select>
-        )}
-      </div>
-      <div>
-        <label>Plataforma:</label>
-        {loadingPlatforms ? (
-          <div>Cargando plataformas...</div>
-        ) : (
-          <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
-            <option value="">Todas</option>
-            {availablePlatforms.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.name}
-              </option>
-            ))}
-          </select>
-        )}
-      </div>
-      <div>
-        <label>Desarrollador:</label>
-        <input
-          type="text"
-          value={developer}
-          onChange={(e) => setDeveloper(e.target.value)}
-          placeholder="Nombre del desarrollador"
-        />
-      </div>
-      <div>
-        <label>Tag:</label>
-        {loadingTags ? (
-          <div>Cargando tags...</div>
-        ) : (
-          <select value={tag} onChange={(e) => setTag(e.target.value)}>
-            <option value="">Todos</option>
-            {availableTags.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name}
-              </option>
-            ))}
-          </select>
-        )}
-      </div>
+    <div className="filters">
+    <div className="filter-item">
+      <label>Año:</label>
+      <input
+        type="number"
+        value={year}
+        onChange={(e) => setYear(e.target.value)}
+        placeholder="Año de lanzamiento"
+        id="anio"
+      />
+    </div>
+    <div className="filter-item">
+      <label>Género:</label>
+      {loadingGenres ? (
+        <div>Cargando géneros...</div>
+      ) : (
+        <select value={genre} onChange={(e) => setGenre(e.target.value)}>
+          <option value="">Todos</option>
+          {availableGenres.map((g) => (
+            <option key={g.id} value={g.id}>
+              {g.name}
+            </option>
+          ))}
+        </select>
+      )}
+    </div>
+    <div className="filter-item">
+      <label>Plataforma:</label>
+      {loadingPlatforms ? (
+        <div>Cargando plataformas...</div>
+      ) : (
+        <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
+          <option value="">Todas</option>
+          {availablePlatforms.map((p) => (
+            <option key={p.id} value={p.id}>
+              {p.name}
+            </option>
+          ))}
+        </select>
+      )}
+    </div>
+    <div className="filter-item">
+      <label>Desarrollador:</label>
+      <input
+        type="text"
+        value={developer}
+        onChange={(e) => setDeveloper(e.target.value)}
+        placeholder="Nombre del desarrollador"
+        id="desarrollador"
+      />
+    </div>
+    <div className="filter-item">
+      <label>Tag:</label>
+      {loadingTags ? (
+        <div>Cargando tags...</div>
+      ) : (
+        <select value={tag} onChange={(e) => setTag(e.target.value)}>
+          <option value="">Todos</option>
+          {availableTags.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.name}
+            </option>
+          ))}
+        </select>
+      )}
+    </div>
+    <div className="filter-item">
       <button onClick={handleApplyFilters}>Aplicar Filtros</button>
     </div>
+  </div>
   );
 };
 

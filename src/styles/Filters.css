@@ -1,0 +1,67 @@
+/* Estilos para los filtros */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espacio entre los elementos */
+    margin-bottom: 20px;
+    align-items: flex-end; /* Alinea los elementos en la parte inferior */
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.filters label {
+    display: block;
+    margin-bottom: 5px; /* Reducir el margen inferior */
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.filters input,
+.filters select {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 14px;
+    transition: border-color var(--transition-speed);
+}
+
+/* Ajustar el ancho de los campos específicos */
+.filters input#anio,
+.filters input#desarrollador {
+    max-width: 150px; /* Ancho máximo más pequeño para Año y Desarrollador */
+}
+
+.filters select {
+    max-width: 200px; /* Ancho máximo para los select */
+}
+
+.filters input:focus,
+.filters select:focus {
+    border-color: var(--primary-hover-color);
+    outline: none;
+}
+
+.filters button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color var(--transition-speed);
+    height: 40px; /* Ajustar la altura para que coincida con los inputs/selects */
+}
+
+.filters button:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* Contenedor para cada filtro */
+.filters .filter-item {
+    flex: 1 1 auto; /* Permite que los elementos crezcan y se ajusten */
+    min-width: 150px; /* Ancho mínimo para cada filtro */
+    max-width: 200px; /* Ancho máximo para cada filtro */
+}
