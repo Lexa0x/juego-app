@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getGameDetails } from '../services/api';
+import '../styles/DetalleJuego.css'; // Importa los estilos
 
 const GameDetail = () => {
   const { id } = useParams();
@@ -24,11 +25,11 @@ const GameDetail = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Cargando detalles...</div>;
+    return <div className="loading">Cargando detalles...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="error">{error}</div>;
   }
 
   const handleBack = () => {
@@ -36,16 +37,15 @@ const GameDetail = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleBack} className="back-button">Volver a la página principal</button>
+    <div className="game-detail">
       <h1>{game.name}</h1>
-      <img src={game.background_image} alt={game.name} style={{ width: '300px' }} />
+      <img src={game.background_image} alt={game.name} />
       <p>{game.description_raw}</p>
       <p><strong>Género:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
       <p><strong>Año de lanzamiento:</strong> {game.released}</p>
       <p><strong>Plataformas:</strong> {game.platforms.map(platform => platform.platform.name).join(', ')}</p>
       {game.trailers && game.trailers.length > 0 && (
-        <div>
+        <div className="trailer-container">
           <h3>Trailer</h3>
           <video width="400" controls>
             <source src={game.trailers[0].data[0].max} type="video/mp4" />
@@ -53,6 +53,7 @@ const GameDetail = () => {
           </video>
         </div>
       )}
+      <button onClick={handleBack} className="back-button">Volver a la página principal</button>
     </div>
   );
 };
