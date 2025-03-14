@@ -66,7 +66,7 @@ La aplicación está hospedada en **Vercel**. Puedes acceder a la versión en pr
 - **/public**: Archivos estáticos como el archivo `index.html`, imágenes y otros recursos públicos.
 - **/services/api.js**: Contiene funciones que interactúan con la API de RAWG para obtener datos sobre juegos, géneros, plataformas y etiquetas.
 - **/components**: Carpeta que contiene los componentes principales de la interfaz de usuario (filtros, detalles del juego, etc.).
-- **/assets**: Archivos estáticos como imágenes y hojas de estilo.
+- **/styles**: Archivos de hojas de estilo.
 
 ## Funcionalidades
 

@@ -67,3 +67,38 @@ body {
 .error {
   color: #ff4d4d;
 }
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden; /* Asegura que no haya scroll horizontal */
+  }
+
+  #root {
+    padding: 10px; /* Padding reducido para móviles */
+    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  }
+
+  .games-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Tarjetas más pequeñas y ajustables */
+    gap: 40px; /* Reduce el espacio entre las tarjetas */
+    padding: 40px; /* Padding horizontal reducido */
+    width: 96%; /* Ocupa el 100% del ancho disponible */
+    max-width: 100%; /* Elimina el ancho máximo en móviles */
+    margin: 0; /* Elimina el margen automático */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  }
+
+  .search-input {
+    font-size: 14px; /* Tamaño de fuente más pequeño en móviles */
+    padding: 10px; /* Padding reducido */
+    max-width: 100%; /* Asegura que no exceda el ancho de la pantalla */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  }
+
+  .loading,
+  .error {
+    font-size: 16px; /* Tamaño de fuente más pequeño en móviles */
+  }
+}
